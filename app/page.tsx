@@ -1,100 +1,151 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ListTodo, Shield, Zap, Clock } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen flex flex-col">
+      <header className="header">
+        <div className="container header-container">
+          <div className="logo-container">
+            <div className="icon-container">
+              <ListTodo className="h-6 w-6" />
+            </div>
+            <h1 className="text-2xl font-bold">TaskMaster</h1>
+          </div>
+          <div className="flex gap-4">
+            <Link href="/login">
+              <button className="btn btn-outline">Login</button>
+            </Link>
+            <Link href="/register">
+              <button className="btn btn-primary">Register</button>
+            </Link>
+          </div>
         </div>
+      </header>
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="hero">
+          <div className="container">
+            <h2 className="hero-title">Manage Your Tasks Efficiently</h2>
+            <p className="hero-subtitle">
+              A simple, secure, and feature-rich todo application to help you
+              stay organized and boost your productivity.
+            </p>
+            <div className="flex-center">
+              <Link href="/register">
+                <button
+                  className="btn"
+                  style={{ background: "white", color: "#3b82f6" }}
+                >
+                  Get Started
+                </button>
+              </Link>
+              <Link href="/login">
+                <button
+                  className="btn"
+                  style={{
+                    background: "rgba(255,255,255,0.2)",
+                    color: "white",
+                    border: "2px solid rgba(255,255,255,0.3)",
+                  }}
+                >
+                  Login
+                </button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="features">
+          <div className="container">
+            <h2 className="features-title">Features</h2>
+            <div className="features-grid">
+              {/* Feature 1 */}
+              <div className="card feature-card">
+                <div className="flex-center mb-6">
+                  <div className="icon-container">
+                    <Shield className="h-6 w-6" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-3">
+                  Secure Authentication
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Your data is protected with JWT authentication and secure
+                  middleware.
+                </p>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="card feature-card">
+                <div className="flex-center mb-6">
+                  <div className="icon-container">
+                    <Zap className="h-6 w-6" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Intuitive Interface</h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Clean and responsive design that works on all devices.
+                </p>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="card feature-card">
+                <div className="flex-center mb-6">
+                  <div className="icon-container">
+                    <Clock className="h-6 w-6" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Real-time Updates</h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Create, update, and delete todos with instant feedback.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section
+          style={{ padding: "5rem 0", backgroundColor: "#f9fafb" }}
+          className="dark:bg-gray-800"
+        >
+          <div className="container text-center">
+            <h2 className="text-3xl font-bold mb-6 text-gradient">
+              Ready to Get Organized?
+            </h2>
+            {/* Fixed visibility - using inline style for maximum specificity */}
+            <p
+              className="text-xl font-medium mb-8 max-w-3xl mx-auto"
+              style={{ color: "#000000" }}
+            >
+              Join thousands of users who are already managing their tasks
+              efficiently.
+            </p>
+            <Link href="/register">
+              <button className="btn btn-primary">Start Now</button>
+            </Link>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className="footer">
+        <div className="container footer-content">
+          <div className="logo-container">
+            <div
+              className="icon-container"
+              style={{ width: "2.5rem", height: "2.5rem" }}
+            >
+              <ListTodo className="h-5 w-5" />
+            </div>
+            <span className="text-xl font-bold">TaskMaster</span>
+          </div>
+          <div className="text-gray-600 dark:text-gray-400">
+            &copy; {new Date().getFullYear()} TaskMaster. All rights reserved.
+          </div>
+        </div>
       </footer>
     </div>
   );
