@@ -1,37 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+TaskMaster - Task Management Application
+TaskMaster is a full-stack todo application with user authentication built using Next.js, MongoDB, and JWT authentication.
 
-## Getting Started
+Features:
+Secure Authentication: User data is protected with JWT authentication and secure middleware
+Intuitive Interface: Clean and responsive design that works across all devices
+Real-time Updates: Create, update, and delete todos with instant feedback
+Dark Mode Support: Seamless switching between light and dark themes
 
-First, run the development server:
+Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Frontend:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Next.js 13.4 (App Router)
+React 18.2
+Tailwind CSS
+Radix UI Components
+Lucide React Icons
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Backend:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Next.js API Routes
+MongoDB
+JWT Authentication
+bcryptjs for password hashing
 
-## Learn More
+Project Structure:
+react-todo/
+├── app/ # Next.js app router
+│ ├── api/ # API routes
+│ ├── login/ # Login page
+│ ├── register/ # Registration page
+│ ├── todos/ # Todo management pages
+│ ├── globals.css # Global styles
+│ ├── styles/ # Additional styles
+│ ├── page.tsx # Landing page
+│ ├── layout.tsx # Root layout
+├── components/ # Reusable React components
+├── contexts/ # React contexts (auth-context)
+│ ├── auth-context.tsx # Authentication context
+├── lib/ # Utility functions and helpers
+├── middleware.ts # Next.js middleware for auth
+└── public/ # Static files
 
-To learn more about Next.js, take a look at the following resources:
+Getting Started
+Prerequisites:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Node.js 14.x or later
+MongoDB instance (local or Atlas)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Installation:
 
-## Deploy on Vercel
+Clone the repository:
+bashgit clone https://github.com/yourusername/react-todo.git
+cd react-todo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Install dependencies:
+bashnpm install
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# task-master
+Create an .env.local file in the root directory with the following variables:
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+
+Run the development server:
+bashnpm run dev
+
+Open http://localhost:3000 in your browser to see the application.
+
+Building for Production
+bashnpm run build
+npm start
+Authentication Flow
+
+Users register with email and password
+Passwords are hashed using bcryptjs before storage
+On login, JWT tokens are issued to authenticate users
+Protected routes are secured with middleware that verifies JWT tokens
+
+License
+MIT
+Contributors
+
+Your Name - GitHub Profile
+
+Acknowledgments
+
+Next.js
+Tailwind CSS
+MongoDB
